@@ -16,7 +16,7 @@ pipeline {
             stage('Deploy') {
                 steps {
                     //
-                        cript { echo "Deploy" }
+                        script { echo "Deploy" }
                 }
             }
     }
