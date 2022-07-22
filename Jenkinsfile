@@ -2,6 +2,7 @@ pipeline {
     agent any
     stages {
             stage('Build') {
+                agent { label "agent1" }
                 steps {
                      //
                         script { echo "Build" }
