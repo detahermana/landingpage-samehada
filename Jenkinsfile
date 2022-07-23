@@ -3,10 +3,22 @@ pipeline {
     agent any
     stages {
             stage('Build') {
-                agent { label "agent1" }
+                agent { label "agent1" } // Define running agent
                 steps {
-                     //
-                        script { echo "Build" }
+                     // Build Image
+                        script { echo "Build"
+                        if (env.BRANCH_NAME == "dev_deta")
+
+                        {
+                        sh "docker build -t detahermana/landingpage:dev-$BUILD_NUMBER . "
+                        sh "docker push detahermana/landingpage:dev-$BUILD_NUMBER"
+
+                        }else{
+                        sh "docker build -t detahermana/landingpage:master-$BUILD_NUMBER . "
+                        sh "docker push detahermana/landingpage:master-$BUILD_NUMBER"
+                         
+                        }
+                         }
                 }
             }
             stage('Test') {
