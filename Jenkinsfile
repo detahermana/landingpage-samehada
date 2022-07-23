@@ -7,7 +7,7 @@ pipeline {
                 steps {
                      // Build Image
                         script { echo "Build"
-                        if (env.BRANCH_NAME == "dev_deta")
+                        if (env.BRANCH_NAME == "dev-deta")
 
                         {
                         sh "docker build -t detahermana/landingpage:dev-$BUILD_NUMBER . "
@@ -16,7 +16,7 @@ pipeline {
                         }else{
                         sh "docker build -t detahermana/landingpage:master-$BUILD_NUMBER . "
                         sh "docker push detahermana/landingpage:master-$BUILD_NUMBER"
-                         
+
                         }
                          }
                 }
